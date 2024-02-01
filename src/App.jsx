@@ -1,11 +1,8 @@
 import "./App.css";
+import Stopwatch from "./components/Stopwatch";
 
 function App() {
-  return (
-    <h1 className="text-3xl font-bold text-red-500 underline text-center">
-      Hello world!
-    </h1>
-  );
+  return <Stopwatch />;
 }
 
 export default App;
