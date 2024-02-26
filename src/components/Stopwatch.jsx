@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import moment from "moment";
 
 function Stopwatch() {
   //setting up useStates hook to manage time state.
@@ -33,12 +34,14 @@ function Stopwatch() {
     return setRunning(false), setTime(0);
   }
 
-  function formatTime(milliseconds) {
-    const minutes = Math.floor(milliseconds / 60000);
-    const seconds = ((milliseconds % 60000) / 1000).toFixed(1);
-    return `${minutes}:${seconds}`;
-  }
+  function formatTime(time) {
+    const minutes = moment.duration(time).get("minutes");
+    const seconds = moment.duration(time).get("seconds");
+    const milliseconds = moment.duration(time).get("milliseconds")/100;
 
+    return `${minutes}:${seconds}:${milliseconds}`;
+  }
+  //
   return (
     // Global container
     <div className="bg-slate-700 h-screen flex justify-center items-center">
